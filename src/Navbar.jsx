@@ -1,14 +1,22 @@
 import { Link, NavLink } from "react-router-dom";
+import useAuth from "./CustomHooks/useAuth";
 
 const Navbar = () => {
+    const { user, LogOut } = useAuth();
+    const handleLogout = () => {
+        LogOut()
+            .then()
+            .catch(error => console.error(error))
+    }
+
     const links = <>
-    <li><NavLink to="/">Home</NavLink></li>
-    <li><NavLink to="/need&volunteer">Need Volunteer</NavLink></li>
-    <li><NavLink to="/register">Register</NavLink></li>
-    {/* <li><NavLink to="/err">404</NavLink></li> */}
+        <li><NavLink to="/">Home</NavLink></li>
+        <li><NavLink to="/need&volunteer">Need Volunteer</NavLink></li>
+        <li><NavLink to="/register">Register</NavLink></li>
+        {/* <li><NavLink to="/err">404</NavLink></li> */}
     </>
     return (
-        <div className="navbar bg-base-300 px-5 lg:px-16">
+        <div className="navbar bg-base-300 px-5 lg:pl-20">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -25,23 +33,29 @@ const Navbar = () => {
                     {links}
                 </ul>
             </div>
-            <Link to="/login" className="navbar-end">
-                <button className="btn">Login</button>
-            </Link>
-            <div className="dropdown dropdown-end">
-                <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                    <div className="w-10 rounded-full">
-                        <img alt="Tailwind CSS Navbar component" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-                    </div>
-                </div>
-                <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-40 space-y-3 md:w-64 text-center ">
-                    <li>User</li>
-                    <li>User Email</li>
-                    <li>Add Volunteer Post</li>
-                    <li>Manage My Post</li>
-                    <button className="btn btn-sm">Logout</button>
-                </ul>
+            <div className="navbar-end">
+                {
+                    user ?
+                        <div className="dropdown dropdown-end">
+                            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                                <div className="w-10 rounded-full">
+                                    <img alt="Tailwind CSS Navbar component" src={user.photoURL} />
+                                </div>
+                            </div>
+                            <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-40 space-y-3 md:w-64 text-center font-semibold">
+                                <li>My Post</li>
+                                <li>Add Volunteer Post</li>
+                                <li className="font-bold">{user.email}</li>
+                                <button onClick={handleLogout} className="btn btn-sm">Logout</button>
+                            </ul>
+                        </div> :
+                        <Link to="/login">
+                            <button className="btn">Login</button>
+                        </Link>
+                }
             </div>
+
+
         </div>
     );
 };

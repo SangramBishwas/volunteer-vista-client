@@ -1,15 +1,38 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { useState } from "react";
 import registerImage from '../../assets/registerr-png.png'
+import useAuth from "../../CustomHooks/useAuth";
+import toast from "react-hot-toast";
 const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
+    const { creatUser, updateUserProfile } = useAuth();
+    const navigate = useNavigate();
     const {
         register,
         handleSubmit,
         formState: { errors },
-    } = useForm()
+    } = useForm();
+
+    const Register = (data) => {
+        const { email, password, name, image } = data;
+        creatUser(email, password)
+            .then((result) => {
+                toast.success('Registration successful');
+                console.log(result.user)
+                updateUserProfile(name, image)
+                    .then(() => {
+                        navigate("/")
+                    })
+                    .catch((error) => console.error(error))
+            })
+            .catch((error) => {
+                toast.error(error)
+                console.error(error)
+            })
+    }
+
     return (
         <div className="mx-5 md:mx-10 my-5 lg:mx-20">
             <div className="bg-gray-50 dark:bg-gray-900 flex items-center md:flex-row-reverse flex-col-reverse md:shadow-2xl lg:my-10 lg:pl-24 justify-between rounded-2xl shadow-2xl">
@@ -28,8 +51,8 @@ const Register = () => {
                                 <label className="label">
                                     <span className="label-text">Photo URL</span>
                                 </label>
-                                <input type="text" placeholder="Photo URL" className="input input-bordered" required
-                                    {...register("photoURL", { required: true })} />
+                                <input type="text" name="image" placeholder="Photo URL" className="input input-bordered" required
+                                    {...register("image", { required: true })} />
                             </div>
                             <div className="form-control">
                                 <label className="label">
