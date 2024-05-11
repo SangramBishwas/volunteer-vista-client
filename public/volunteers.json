@@ -1,0 +1,68 @@
+[
+    {
+        "_id": 1,
+        "post_title": "Help Clean Up Local Beach",
+        "image": "https://example.com/beach_cleanup.jpg",
+        "category": "Environmental Conservation",
+        "userName": "BeachLover23",
+        "email": "beachlover@example.com",
+        "location": "Seaside Town, USA",
+        "numberOfVolunteer": 10,
+        "deadline": "2024-06-20"
+    },
+    {
+        "_id": 2,
+        "post_title": "Assist Elderly Residents with Grocery Shopping",
+        "image": "https://example.com/elderly_assistance.jpg",
+        "category": "Community Outreach",
+        "userName": "CommunityHelper",
+        "email": "communityhelper@example.com",
+        "location": "Neighborville, USA",
+        "numberOfVolunteer": 4,
+        "deadline": "2024-07-05"
+    },
+    {
+        "_id": 3,
+        "post_title": "Plant Trees in Urban Area",
+        "image": "https://example.com/tree_planting.jpg",
+        "category": "Green Initiatives",
+        "userName": "EcoWarrior",
+        "email": "ecowarrior@example.com",
+        "location": "Metropolis, USA",
+        "numberOfVolunteer": 15,
+        "deadline": "2024-06-25"
+    },
+    {
+        "_id": 4,
+        "post_title": "Serve Meals at Homeless Shelter",
+        "image": "https://example.com/homeless_shelter.jpg",
+        "category": "Social Services",
+        "userName": "FoodForAll",
+        "email": "foodforall@example.com",
+        "location": "City Center, USA",
+        "numberOfVolunteer": 6,
+        "deadline": "2024-07-10"
+    },
+    {
+        "_id": 5,
+        "post_title": "Volunteer at Local Youth Center",
+        "image": "https://example.com/youth_center.jpg",
+        "category": "Youth Development",
+        "userName": "YouthMentor",
+        "email": "youthmentor@example.com",
+        "location": "Downtown, USA",
+        "numberOfVolunteer": 8,
+        "deadline": "2024-06-28"
+    },
+    {
+        "_id": 6,
+        "post_title": "Organize Fundraising Event for Cancer Research",
+        "image": "https://example.com/fundraising_event.jpg",
+        "category": "Healthcare Support",
+        "userName": "HopeForCure",
+        "email": "hopeforcure@example.com",
+        "location": "Hopeville, USA",
+        "numberOfVolunteer": 20,
+        "deadline": "2024-07-15"
+    }
+]
