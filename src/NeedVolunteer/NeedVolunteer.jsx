@@ -9,17 +9,12 @@ const NeedVolunteer = () => {
         axios('/public/volunteers.json')
             .then(res => setVolunteers(res.data))
     }, [])
-    const sortByDeadline = (x, y) => {
-        const seriaiA = new Date(x.deadline);
-        const serialB = new Date(y.deadline);
-        return seriaiA - serialB;
-    }
-    volunteers.sort(sortByDeadline);
     console.log(volunteers)
     return (
-        <div className="mx-12 lg:mx-24">
-            <h2 className="text-center font-bold text-xl md:text-3xl py-5">Volunteer Needs Now</h2>
-            <form className="mb-10 max-w-md mx-auto">
+        <div className="mx-12 my-5 md:my-10 lg:mx-24">
+            <h2 className="text-center font-bold text-2xl md:text-3xl">Volunteer Needs Now</h2>
+
+            <form className="my-5 md:my-10 max-w-md mx-auto">
                 <label className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
                 <div className="relative">
                     <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -53,12 +48,7 @@ const NeedVolunteer = () => {
                     </div>)
                 }
             </div>
-            <div className="card-actions justify-center my-10">
-                <Link to="/need&volunteer">
-                    <button className="btn w-40 text-lg btn-primary text-white">All Posts</button>
-                </Link>
-            </div>
-        </div >
+        </div>
     );
 };
 
