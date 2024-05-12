@@ -1,14 +1,16 @@
-import axios from "axios";
+// import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import useAxios from "../../CustomHooks/useAxios";
 
 const VolunteersNeed = () => {
+    const axiosSecure = useAxios();
     const [allVolunteers, setAllVolunteers] = useState([]);
-
+    const url = '/posts'
     useEffect(() => {
-        axios('/public/volunteers.json')
+        axiosSecure.get(url)
             .then(res => setAllVolunteers(res.data))
-    }, [])
+    }, [axiosSecure])
     const sortByDeadline = (x, y) => {
         const seriaiA = new Date(x.deadline);
         const serialB = new Date(y.deadline);
@@ -16,7 +18,7 @@ const VolunteersNeed = () => {
     }
     allVolunteers.sort(sortByDeadline);
     const volunteers = allVolunteers.slice(0, 6)
-    console.log(volunteers)
+    
     return (
         <div className="mx-12 lg:mx-24">
             <h2 className="text-center font-bold text-xl md:text-3xl py-5">Volunteer Needs Now</h2>
@@ -33,7 +35,7 @@ const VolunteersNeed = () => {
                                 <div className="flex gap-2 items-center"><h4 className="font-semibold">Last Date:</h4><span>: {volunteer.deadline}</span></div>
                             </div>
                             <div className="card-actions justify-end">
-                                <Link to={`/need&volunteer/${volunteer._id}`}>
+                                <Link to={`/posts/${volunteer._id}`}>
                                     <button className="btn btn-primary text-lg">Details</button>
                                 </Link>
                             </div>
@@ -46,7 +48,7 @@ const VolunteersNeed = () => {
                     <button className="btn w-40 text-lg btn-primary text-white">All Posts</button>
                 </Link>
             </div>
-        </div > 
+        </div >
     );
 };
 

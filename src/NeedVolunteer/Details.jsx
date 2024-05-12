@@ -5,10 +5,9 @@ import useAuth from "../CustomHooks/useAuth";
 const Details = () => {
     const { user } = useAuth()
     const volunteers = useLoaderData();
-    const { stringId } = useParams();
-    const id = parseInt(stringId)
+    const { id } = useParams();   
     const volunteer = volunteers.find((volunt) => volunt._id === id);
-    const { title, image, category, descrption, location, numberOfVolunteer, deadline } = volunteer;
+    const { title, image, category, descrption, location, numberOfVolunteer } = volunteer;
     const [numOfVolunteer, setNumOfVolunteer] = useState(numberOfVolunteer);
     const [btnClicked, setBtnClicked] = useState(false);
 

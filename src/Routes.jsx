@@ -15,7 +15,7 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <Root></Root>,
-        errorElement:<ErrorPage></ErrorPage>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: "/",
@@ -26,9 +26,9 @@ const router = createBrowserRouter([
                 element: <NeedVolunteer></NeedVolunteer>
             },
             {
-                path: "/need&volunteer/:stringId",
+                path: "/posts/:id",
                 element: <Details></Details>,
-                loader: () => fetch('/public/volunteers.json')
+                loader: () => fetch(`${import.meta.env.VITE_API_URL}/posts`)
             },
             {
                 path: "/login",
