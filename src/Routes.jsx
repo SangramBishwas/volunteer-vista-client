@@ -9,6 +9,7 @@ import Register from "./Pages/Register/Register";
 import ErrorPage from "./ErrorPage";
 import MyPost from "./Pages/My Post/MyPost";
 import AddVolunteer from "./Pages/Add Volunteer/AddVolunteer";
+import Details from "./NeedVolunteer/Details";
 
 const router = createBrowserRouter([
     {
@@ -23,6 +24,11 @@ const router = createBrowserRouter([
             {
                 path: "/need&volunteer",
                 element: <NeedVolunteer></NeedVolunteer>
+            },
+            {
+                path: "/need&volunteer/:stringId",
+                element: <Details></Details>,
+                loader: () => fetch('/public/volunteers.json')
             },
             {
                 path: "/login",

@@ -1,9 +1,11 @@
+import VolunteersNeed from "./VolunteersNeed";
 
 const Home = () => {
     return (
         <div>
-            this is home page
+            Banner Needed
             {/* Banner Slider */}
+            <VolunteersNeed />
         </div>
     );
 };
