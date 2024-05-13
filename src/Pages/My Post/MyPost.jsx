@@ -18,7 +18,9 @@ const MyPost = () => {
                 {
                     posts.map(post => <Apost
                         key={post._id}
-                        post={post}></Apost>)
+                        post={post}
+                        posts={posts}
+                        setPosts={setPosts}></Apost>)
                 }
             </div>
 
