@@ -12,8 +12,6 @@ const Apost = ({ post, posts, setPosts }) => {
     const [startDate, setStartDate] = useState(new Date());
 
     const handleDelete = (id) => {
-        console.log('delete this craft', id);
-
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",

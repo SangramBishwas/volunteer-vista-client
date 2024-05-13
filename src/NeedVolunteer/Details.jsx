@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
 import useAuth from "../CustomHooks/useAuth";
+import useAxios from "../CustomHooks/useAxios";
+import toast from "react-hot-toast";
 
 const Details = () => {
-    const { user } = useAuth()
+    const { user } = useAuth();
+    const axiosSecure = useAxios()
     const volunteers = useLoaderData();
-    const { id } = useParams();   
+    const { id } = useParams();
     const volunteer = volunteers.find((volunt) => volunt._id === id);
     const { title, image, category, descrption, location, numberOfVolunteer } = volunteer;
     const [numOfVolunteer, setNumOfVolunteer] = useState(numberOfVolunteer);
@@ -15,6 +18,33 @@ const Details = () => {
         setBtnClicked(true);
         setNumOfVolunteer(numOfVolunteer - 1)
 
+    }
+
+    const handleVolunteerRequest = (e) => {
+        e.preventDefault()
+        const form = new FormData(e.currentTarget);
+        console.log(form.get('email'));
+
+        const email = user?.email;
+        const userName = user?.displayName;
+        const category = form.get('category');
+        const image = form.get('image');
+        const description = descrption;
+        const location = form.get('location');
+        const title = form.get('title');
+        const suggestion = form.get('suggestion');
+
+        const newRequest = { title, image, category, description, userName, email, location, suggestion };
+        console.log(newRequest);
+
+        axiosSecure.post('/requests', newRequest)
+            .then(res => {
+                const data = res.data;
+                console.log(data);
+                if (data.acknowledged) {
+                    toast('Your request added successfully')
+                }
+            })
     }
     return (
         <div className="">
@@ -35,7 +65,7 @@ const Details = () => {
             <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
                 <div className="modal-box">
                     <h2 className="text-3xl font-bold text-center">Be A Volunteer</h2>
-                    <form method="dialog" className="max-w-md mx-auto my-5">
+                    <form onSubmit={handleVolunteerRequest} method="dialog" className="max-w-md mx-auto my-5">
                         <div className="relative z-0 w-full mb-5 group">
                             <input type="text" name="title" id="floating_email" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " defaultValue={title} readOnly />
                             <label className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Post Title</label>
@@ -58,13 +88,20 @@ const Details = () => {
                                 <label className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Location</label>
                             </div>
                         </div>
-                        <div className="relative z-0 w-full mb-5 group">
-                            <input type="email" name="email" id="floating_password" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " defaultValue={user?.email} readOnly />
-                            <label className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email</label>
+                        <div className="grid md:grid-cols-2 md:gap-6">
+                            <div className="relative z-0 w-full mb-5 group">
+                                <input type="email" name="email" id="floating_password" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " defaultValue={user?.email} readOnly />
+                                <label className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email</label>
+                            </div>
+                            <div className="relative z-0 w-full mb-5 group">
+                                <input type="text" name="status" id="floating_last_name" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " defaultValue="requested" readOnly />
+                                <label className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Status</label>
+                            </div>
                         </div>
+
                         <div className="mb-5 w-full">
-                            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Descrpition</label>
-                            <input type="text" id="large-input" className="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" defaultValue={descrption} readOnly />
+                            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Suggestion</label>
+                            <input type="text" name="suggestion" className="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
                         </div>
                         <button onClick={handleRequest} type="submit" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-base w-full px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Request</button>
                     </form>

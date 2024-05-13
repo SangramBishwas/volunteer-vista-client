@@ -6,7 +6,7 @@ import useAxios from "../../CustomHooks/useAxios";
 import toast from "react-hot-toast";
 const AddVolunteer = () => {
     const { user } = useAuth();
-    const axiosSecure = useAxios()
+    const axiosSecure = useAxios();
     const [startDate, setStartDate] = useState(new Date());
     const handleAddVolunteer = (e) => {
         e.preventDefault()
