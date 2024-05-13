@@ -23,7 +23,7 @@ const NeedVolunteer = () => {
     );
 
     return (
-        <div className="mx-12 my-5 md:my-10 lg:mx-24">
+        <div className="mx-5 md:mx-12 my-5 md:my-10 lg:mx-24">
             <h2 className="text-center font-bold text-2xl md:text-3xl">Volunteer Needs Now</h2>
 
             <form className="my-5 md:my-10 max-w-md mx-auto">

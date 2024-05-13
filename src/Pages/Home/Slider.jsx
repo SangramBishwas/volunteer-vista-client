@@ -14,7 +14,7 @@ import { Typewriter } from 'react-simple-typewriter';
 const Slider = () => {
 
     return (
-        <Swiper
+        <Swiper className='z-10'
             modules={[Autoplay, Navigation, Pagination, Scrollbar, A11y]}
             spaceBetween={50}
             slidesPerView={1}
