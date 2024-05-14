@@ -11,14 +11,14 @@ const Details = () => {
     const { id } = useParams();
     const volunteer = volunteers.find((volunt) => volunt._id === id);
     const { title, image, category, descrption, location, numberOfVolunteer } = volunteer;
-    const [numOfVolunteer, setNumOfVolunteer] = useState(numberOfVolunteer);
+    const [numOfVolunteer, setNumOfVolunteer] = useState(parseInt(numberOfVolunteer));
     const [btnClicked, setBtnClicked] = useState(false);
+
+    console.log(typeof (numOfVolunteer))
 
     const handleRequest = () => {
         setBtnClicked(true);
-        setNumOfVolunteer(numOfVolunteer - 1)
-
-
+        setNumOfVolunteer(numOfVolunteer - 1);
     }
 
     const handleVolunteerRequest = (e) => {
@@ -62,7 +62,7 @@ const Details = () => {
                                 <div><h3 className="text-xl font-semibold">Category: {category}</h3></div>
                             </div>
                             {
-                                numOfVolunteer == 0 ? <div className="text-lg italic font-bold">No need any volunteers now</div> :
+                                numOfVolunteer === 0 ? <div className="text-lg italic font-bold">No need any volunteers now</div> :
                                     <button onClick={() => document.getElementById('my_modal_5').showModal()} className="btn text-white text-lg bg-transparent hover:btn-secondary" disabled={btnClicked}>Be Volunteer</button>
                             }
 

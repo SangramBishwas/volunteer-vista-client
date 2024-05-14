@@ -43,11 +43,10 @@ const Request = ({ request, requests, setRequests }) => {
             <figure className='md:w-1/2'><img src={image} alt="Movie" /></figure>
             <div className="card-body">
                 <h2 className="card-title">{title}</h2>
-                <div className="flex">
-                    <div className="flex gap-2 items-center"><h4 className="font-semibold">Category</h4><span>: {category}</span></div>
-                </div>
                 <div className="flex justify-between">
-                    <div className="flex gap-2 items-center"><h4 className="font-semibold">Location:</h4><span>: {location}</span></div>
+                    <h4 className="font-semibold">{category}</h4>
+                    <h4 className="font-semibold">{location}</h4>
+
                 </div>
                 <div onClick={() => handleDelete(_id)} className="right-1 top-1 lg:absolute card-actions justify-end pb-5">
                     <button className="btn lg:btn-sm btn-primary">Cancel</button>

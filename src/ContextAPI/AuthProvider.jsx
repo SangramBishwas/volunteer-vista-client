@@ -2,11 +2,13 @@ import { createContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { GoogleAuthProvider, GithubAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import auth from '../Firebase/firebase.config';
+import useAxios from '../CustomHooks/useAxios';
 
 export const Context = createContext(null)
 const googleProvider = new GoogleAuthProvider();
 const githubProvider = new GithubAuthProvider();
 const AuthProvider = ({ children }) => {
+    const axiosSecure = useAxios()
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true)
     const creatUser = (email, password) => {
@@ -54,13 +56,27 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+            const userEmail = currentUser?.email || user?.email
             setUser(currentUser);
             setLoading(false);
+            const loggedUser = { email: userEmail }
+            if (currentUser) {
+                axiosSecure.post('/jwt', loggedUser)
+                    .then(res => {
+                        console.log(res.data)
+                    })
+            } else {
+                axiosSecure.post('/logout', loggedUser)
+                    .then(res => {
+                        console.log(res.data)
+                    })
+            }
+
         })
         return () => {
             unSubscribe()
         }
-    }, [])
+    }, [axiosSecure, user])
 
     return (
         <Context.Provider value={authInfo}>

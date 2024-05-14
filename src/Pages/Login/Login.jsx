@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import useAuth from "../../CustomHooks/useAuth";
 import toast from "react-hot-toast";
@@ -6,8 +6,8 @@ import toast from "react-hot-toast";
 const Login = () => {
     // const [showPassword, setShowPassword] = useState(false);
     const { userLogin, googleLogin } = useAuth();
-    // const navigate = useNavigate();
-    // const location = useLocation();
+    const navigate = useNavigate();
+    const location = useLocation();
     const handleLogin = (e) => {
         e.preventDefault();
         const form = new FormData(e.currentTarget);
@@ -18,7 +18,7 @@ const Login = () => {
             .then(result => {
                 console.log(result);
                 toast.success('Logged in successfully')
-                // navigate(location?.state ? location.state : "/");
+                navigate(location?.state ? location.state : "/");
             })
             .catch(error => {
                 toast.error('Invalid email and password')
@@ -30,7 +30,7 @@ const Login = () => {
             .then((result) => {
                 console.log(result.user);
                 toast.success('Logged in successfully')
-                // navigate(location?.state ? location.state : "/");
+                navigate(location?.state ? location.state : "/");
             })
             .catch(error => console.log(error))
     }

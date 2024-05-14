@@ -20,8 +20,6 @@ const MyPost = () => {
             .then(res => setRequests(res.data))
     }, [axiosSecure, user])
 
-    console.log(posts);
-    console.log(requests)
     
     return (
         <div className="mx-5 md:mx-12 lg:mx-24 my-5 lg:my-10">
