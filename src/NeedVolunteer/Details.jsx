@@ -21,7 +21,6 @@ const Details = () => {
     }
 
     const handleVolunteerRequest = (e) => {
-        e.preventDefault()
         const form = new FormData(e.currentTarget);
         console.log(form.get('email'));
 

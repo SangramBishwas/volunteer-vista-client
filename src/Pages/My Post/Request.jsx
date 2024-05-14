@@ -39,8 +39,8 @@ const Request = ({ request, requests, setRequests }) => {
         });
     }
     return (
-        <div className="card h-2/3 card-side bg-base-100 shadow-xl">
-            <figure className='lg:w-1/2'><img src={image} alt="Movie" /></figure>
+        <div className="relative card flex-col md:flex-row lg:flex-row lg:h-2/3 card-side bg-base-100 shadow-xl">
+            <figure className='md:w-1/2'><img src={image} alt="Movie" /></figure>
             <div className="card-body">
                 <h2 className="card-title">{title}</h2>
                 <div className="flex">
@@ -49,8 +49,8 @@ const Request = ({ request, requests, setRequests }) => {
                 <div className="flex justify-between">
                     <div className="flex gap-2 items-center"><h4 className="font-semibold">Location:</h4><span>: {location}</span></div>
                 </div>
-                <div onClick={() => handleDelete(_id)} className="card-actions justify-end pb-5">
-                    <button className="btn btn-primary">Cancel</button>
+                <div onClick={() => handleDelete(_id)} className="right-1 top-1 lg:absolute card-actions justify-end pb-5">
+                    <button className="btn lg:btn-sm btn-primary">Cancel</button>
                 </div>
             </div>
         </div>

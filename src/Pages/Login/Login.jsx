@@ -5,15 +5,15 @@ import toast from "react-hot-toast";
 // import { FaGoogle } from "react-icons/fa";
 const Login = () => {
     // const [showPassword, setShowPassword] = useState(false);
-    const { userLogin, googleLogin, user } = useAuth();
+    const { userLogin, googleLogin } = useAuth();
     // const navigate = useNavigate();
     // const location = useLocation();
-    console.log(user)
     const handleLogin = (e) => {
         e.preventDefault();
         const form = new FormData(e.currentTarget);
         const email = form.get('email');
         const password = form.get('password');
+        console.log(email, password)
         userLogin(email, password)
             .then(result => {
                 console.log(result);
