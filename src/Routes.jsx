@@ -10,7 +10,7 @@ import ErrorPage from "./ErrorPage";
 import MyPost from "./Pages/My Post/MyPost";
 import AddVolunteer from "./Pages/Add Volunteer/AddVolunteer";
 import Details from "./NeedVolunteer/Details";
-
+import PivateRoute from "./ContextAPI/PivateRoute";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -40,7 +40,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/my&post",
-                element: <MyPost></MyPost>
+                element: <PivateRoute><MyPost></MyPost></PivateRoute>
             },
             {
                 path: "/add&volunteer",

@@ -19,8 +19,10 @@ const MyPost = () => {
         axiosSecure.get(`/myRequests/${user?.email}`)
             .then(res => setRequests(res.data))
     }, [axiosSecure, user])
+
     console.log(posts);
     console.log(requests)
+    
     return (
         <div className="mx-5 md:mx-12 lg:mx-24 my-5 lg:my-10">
             <h2 className="text-center font-bold text-xl md:text-3xl pb-10">My Needed Posts</h2>
