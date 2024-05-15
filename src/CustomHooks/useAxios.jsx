@@ -5,7 +5,7 @@ const axiosSecure = axios.create({
     withCredentials: true,
 })
 const useAxios = () => {
-    
+
     return axiosSecure
 };
 

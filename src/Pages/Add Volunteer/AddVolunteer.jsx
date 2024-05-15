@@ -11,7 +11,7 @@ const AddVolunteer = () => {
     const handleAddVolunteer = (e) => {
         e.preventDefault()
         const form = new FormData(e.currentTarget);
-        console.log(form.get('email'));
+        // console.log(form.get('email'));
 
         const email = user?.email;
         const userName = user?.displayName;
@@ -24,13 +24,13 @@ const AddVolunteer = () => {
         const title = form.get('title');
 
         const newPost = { title, image, category, description, userName, email, location, numberOfVolunteer, deadline };
-        console.log(newPost);
+        // console.log(newPost);
         const url = '/posts'
 
         axiosSecure.post(url, newPost)
             .then(res => {
                 const data = res.data;
-                console.log(data);
+                // console.log(data);
                 if (data.acknowledged) {
                     toast('New post added successfully')
                 }

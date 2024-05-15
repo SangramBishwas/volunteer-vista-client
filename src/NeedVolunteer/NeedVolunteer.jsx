@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useAxios from "../CustomHooks/useAxios";
+import { GrLinkNext } from "react-icons/gr";
 
 const NeedVolunteer = () => {
     const axiosSecure = useAxios();
@@ -52,7 +53,7 @@ const NeedVolunteer = () => {
                         </div>
                         <div className="card-actions justify-end">
                             <Link to={`/posts/${volunteer._id}`}>
-                                <button className="btn btn-primary text-lg">Details</button>
+                                <button className="btn btn-neutral text-lg"><GrLinkNext /></button>
                             </Link>
                         </div>
                     </div>

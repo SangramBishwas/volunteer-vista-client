@@ -14,7 +14,7 @@ const Details = () => {
     const [numOfVolunteer, setNumOfVolunteer] = useState(parseInt(numberOfVolunteer));
     const [btnClicked, setBtnClicked] = useState(false);
 
-    console.log(typeof (numOfVolunteer))
+    // console.log(typeof (numOfVolunteer))
 
     const handleRequest = () => {
         setBtnClicked(true);
@@ -23,7 +23,7 @@ const Details = () => {
 
     const handleVolunteerRequest = (e) => {
         const form = new FormData(e.currentTarget);
-        console.log(form.get('email'));
+        // console.log(form.get('email'));
 
         const email = user?.email;
         const userName = user?.displayName;
@@ -35,12 +35,12 @@ const Details = () => {
         const suggestion = form.get('suggestion');
 
         const newRequest = { title, image, category, description, userName, email, location, suggestion };
-        console.log(newRequest);
+        // console.log(newRequest);
 
         axiosSecure.post('/requests', newRequest)
             .then(res => {
                 const data = res.data;
-                console.log(data);
+                // console.log(data);
                 if (data.acknowledged) {
                     toast('Your request added successfully')
                 }

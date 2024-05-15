@@ -13,10 +13,10 @@ const Login = () => {
         const form = new FormData(e.currentTarget);
         const email = form.get('email');
         const password = form.get('password');
-        console.log(email, password)
+        // console.log(email, password)
         userLogin(email, password)
-            .then(result => {
-                console.log(result);
+            .then(() => {
+                // console.log(result);
                 toast.success('Logged in successfully')
                 navigate(location?.state ? location.state : "/");
             })
@@ -27,8 +27,8 @@ const Login = () => {
     }
     const handleLoginWithGoogle = () => {
         googleLogin()
-            .then((result) => {
-                console.log(result.user);
+            .then(() => {
+                // console.log(result.user);
                 toast.success('Logged in successfully')
                 navigate(location?.state ? location.state : "/");
             })

@@ -18,9 +18,9 @@ const Register = () => {
     const Register = (data) => {
         const { email, password, name, image } = data;
         creatUser(email, password)
-            .then((result) => {
+            .then(() => {
                 toast.success('Registration successful');
-                console.log(result.user)
+                // console.log(result.user)
                 updateUserProfile(name, image)
                     .then(() => {
                         navigate("/")

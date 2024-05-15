@@ -2,13 +2,14 @@ import { createContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { GoogleAuthProvider, GithubAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth';
 import auth from '../Firebase/firebase.config';
-import useAxios from '../CustomHooks/useAxios';
+import axios from 'axios';
+// import useAxios from '../CustomHooks/useAxios';
 
-export const Context = createContext(null)
+export const Context = createContext()
 const googleProvider = new GoogleAuthProvider();
 const githubProvider = new GithubAuthProvider();
 const AuthProvider = ({ children }) => {
-    const axiosSecure = useAxios()
+    // const axiosSecure = useAxios()
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true)
     const creatUser = (email, password) => {
@@ -43,6 +44,25 @@ const AuthProvider = ({ children }) => {
         return signOut(auth);
     }
 
+    useEffect(() => {
+        const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+            setLoading(false);
+            const loggedUser = { email: currentUser?.email }
+            if (currentUser) {
+                axios.post('https://volunteer-vista-server.vercel.app/jwt', loggedUser, { withCredentials: true })
+                    .then()
+            } else {
+                axios.post('https://volunteer-vista-server.vercel.app/logout', loggedUser, { withCredentials: true })
+                    .then()
+            }
+
+        })
+        return () => {
+            return unSubscribe()
+        }
+    }, [])
+
     const authInfo = {
         user,
         loading,
@@ -53,31 +73,6 @@ const AuthProvider = ({ children }) => {
         updateUserProfile,
         LogOut
     }
-
-    useEffect(() => {
-        const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-            const userEmail = currentUser?.email || user?.email
-            setUser(currentUser);
-            setLoading(false);
-            const loggedUser = { email: userEmail }
-            if (currentUser) {
-                axiosSecure.post('/jwt', loggedUser)
-                    .then(res => {
-                        console.log(res.data)
-                    })
-            } else {
-                axiosSecure.post('/logout', loggedUser)
-                    .then(res => {
-                        console.log(res.data)
-                    })
-            }
-
-        })
-        return () => {
-            unSubscribe()
-        }
-    }, [axiosSecure, user])
-
     return (
         <Context.Provider value={authInfo}>
             {children}

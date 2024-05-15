@@ -25,7 +25,7 @@ const Apost = ({ post, posts, setPosts }) => {
                 axiosSecure.delete(`/posts/${id}`)
                     .then((res) => {
                         const data = res.data;
-                        console.log(data)
+                        // console.log(data)
 
                         if (data.deletedCount > 0) {
                             Swal.fire({
@@ -46,7 +46,7 @@ const Apost = ({ post, posts, setPosts }) => {
     const handleUpdate = (e) => {
 
         const form = new FormData(e.currentTarget);
-        console.log(form.get('email'));
+        // console.log(form.get('email'));
 
         const category = form.get('category');
         const image = form.get('image');
@@ -57,12 +57,12 @@ const Apost = ({ post, posts, setPosts }) => {
         const title = form.get('title');
 
         const updatePost = { title, image, category, description, location, numberOfVolunteer, deadline };
-        console.log(updatePost);
+        // console.log(updatePost);
 
         axiosSecure.put(`/posts/${_id}`, updatePost)
             .then(res => {
                 const data = res.data;
-                console.log(data)
+                // console.log(data)
                 if (data.modifiedCount > 0) {
                     Swal.fire({
                         title: 'Success!',

@@ -6,7 +6,7 @@ const Request = ({ request, requests, setRequests }) => {
     const { _id, category, title, image, location } = request;
     const axiosSecure = useAxios();
     const handleDelete = (id) => {
-        console.log('cancel this card', id);
+        // console.log('cancel this card', id);
 
         Swal.fire({
             title: "Are you sure?",
@@ -21,7 +21,7 @@ const Request = ({ request, requests, setRequests }) => {
                 axiosSecure.delete(`/requests/${id}`)
                     .then((res) => {
                         const data = res.data;
-                        console.log(data)
+                        // console.log(data)
 
                         if (data.deletedCount > 0) {
                             Swal.fire({
@@ -39,7 +39,7 @@ const Request = ({ request, requests, setRequests }) => {
         });
     }
     return (
-        <div className="relative card flex-col md:flex-row lg:flex-row lg:h-2/3 card-side bg-base-100 shadow-xl">
+        <div className="relative card flex-col md:flex-row lg:flex-row lg:h-full card-side bg-base-100 shadow-xl">
             <figure className='md:w-1/2'><img src={image} alt="Movie" /></figure>
             <div className="card-body">
                 <h2 className="card-title">{title}</h2>

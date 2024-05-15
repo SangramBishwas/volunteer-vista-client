@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useAxios from "../../CustomHooks/useAxios";
-
+import { GrLinkNext } from "react-icons/gr";
 const VolunteersNeed = () => {
     const axiosSecure = useAxios();
     const [allVolunteers, setAllVolunteers] = useState([]);
@@ -25,7 +25,7 @@ const VolunteersNeed = () => {
             <h2 className="text-center font-bold text-xl md:text-3xl py-5">Volunteer Needs Now</h2>
             <div className="my-5 gap-7 grid md:grid-cols-2 lg:grid-cols-3">
                 {
-                    volunteers.map((volunteer) => <div key={volunteer._id} className="card w-96 bg-base-100 shadow-xl">
+                    volunteers.map((volunteer) => <div key={volunteer._id} className="card w-96 bg-base-100 hover:shadow-xl">
                         <figure><img className="h-64 w-full" src={volunteer.image} alt="Shoes" /></figure>
                         <div className="card-body">
                             <h2 className="card-title">{volunteer.title}</h2>
@@ -37,7 +37,7 @@ const VolunteersNeed = () => {
                             </div>
                             <div className="card-actions justify-end">
                                 <Link to={`/posts/${volunteer._id}`}>
-                                    <button className="btn btn-primary text-lg">Details</button>
+                                    <button className="btn btn-neutral text-lg"><GrLinkNext /></button>
                                 </Link>
                             </div>
                         </div>
