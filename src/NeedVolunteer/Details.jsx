@@ -3,6 +3,7 @@ import { useLoaderData, useParams } from "react-router-dom";
 import useAuth from "../CustomHooks/useAuth";
 import useAxios from "../CustomHooks/useAxios";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const Details = () => {
     const { user } = useAuth();
@@ -49,7 +50,11 @@ const Details = () => {
 
     return (
         <div className="">
-
+            <Helmet>
+                <title>
+                    VolunteerVista | Post Details
+                </title>
+            </Helmet>
             <div>
                 <div className="hero min-h-96" style={{ backgroundImage: `url(${image})` }}>
                     <div className="hero-overlay bg-opacity-60"></div>

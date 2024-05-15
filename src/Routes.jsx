@@ -27,7 +27,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/posts/:id",
-                element: <Details></Details>,
+                element: <PivateRoute><Details></Details></PivateRoute>,
                 loader: () => fetch(`${import.meta.env.VITE_API_URL}/posts`)
             },
             {

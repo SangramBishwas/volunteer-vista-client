@@ -4,6 +4,7 @@ import useAxios from "../../CustomHooks/useAxios";
 import Apost from "./Apost";
 import Request from "./Request";
 import noDataAvailable from "../../assets/sorry-no-data.png"
+import { Helmet } from "react-helmet-async";
 const MyPost = () => {
     const { user } = useAuth();
     const axiosSecure = useAxios();
@@ -23,6 +24,11 @@ const MyPost = () => {
 
     return (
         <div className="mx-5 md:mx-12 lg:mx-24 my-5 lg:my-10">
+            <Helmet>
+                <title>
+                    VolunteerVista | My Post
+                </title>
+            </Helmet>
             <h2 className="text-center font-bold text-xl md:text-3xl pb-10">My Needed Posts</h2>
             {posts.length === 0 ?
                 <div className="w-full">

@@ -4,6 +4,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import useAuth from "../../CustomHooks/useAuth";
 import useAxios from "../../CustomHooks/useAxios";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 const AddVolunteer = () => {
     const { user } = useAuth();
     const axiosSecure = useAxios();
@@ -36,9 +37,14 @@ const AddVolunteer = () => {
                 }
             })
     }
-    
+
     return (
         <div className="my-10">
+            <Helmet>
+                <title>
+                    VolunteerVista | Add Volunteer
+                </title>
+            </Helmet>
             <h2 className="text-center font-bold text-xl md:text-3xl">Add Your Post</h2>
             <form onSubmit={handleAddVolunteer} className="max-w-md mx-auto my-5">
                 <div className="relative z-0 w-full mb-5 group">

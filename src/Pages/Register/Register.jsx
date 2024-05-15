@@ -5,6 +5,7 @@ import { useState } from "react";
 import registerImage from '../../assets/registerr-png.png'
 import useAuth from "../../CustomHooks/useAuth";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
     const { creatUser, updateUserProfile } = useAuth();
@@ -35,6 +36,11 @@ const Register = () => {
 
     return (
         <div className="mx-5 md:mx-10 my-5 lg:mx-20">
+            <Helmet>
+                <title>
+                    VolunteerVista | Register
+                </title>
+            </Helmet>
             <div className="bg-gray-50 dark:bg-gray-900 flex items-center md:flex-row-reverse flex-col-reverse md:shadow-2xl lg:my-10 lg:pl-24 justify-between rounded-2xl shadow-2xl">
                 <div className="py-5 w-full md:w-1/2">
                     <div className="card shrink-0 w-full max-w-sm bg-base-100 mx-auto">

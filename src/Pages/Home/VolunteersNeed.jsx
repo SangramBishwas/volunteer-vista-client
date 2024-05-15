@@ -21,7 +21,7 @@ const VolunteersNeed = () => {
     const volunteers = allVolunteers.slice(0, 6)
     
     return (
-        <div className="mx-5 md:mx-12 lg:mx-24">
+        <div className="my-10 lg:my-20 mx-5 md:mx-12 lg:mx-24">
             <h2 className="text-center font-bold text-xl md:text-3xl py-5">Volunteer Needs Now</h2>
             <div className="my-5 gap-7 grid md:grid-cols-2 lg:grid-cols-3">
                 {

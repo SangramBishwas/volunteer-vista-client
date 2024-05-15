@@ -2,6 +2,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import useAuth from "../../CustomHooks/useAuth";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 // import { FaGoogle } from "react-icons/fa";
 const Login = () => {
     // const [showPassword, setShowPassword] = useState(false);
@@ -36,6 +37,11 @@ const Login = () => {
     }
     return (
         <div className="bg-gray-50 dark:bg-gray-900 my-10">
+            <Helmet>
+                <title>
+                    VolunteerVista | Login
+                </title>
+            </Helmet>
             <div className="mx-auto w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
                 <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                     <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
