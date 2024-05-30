@@ -2,12 +2,8 @@ import { Link, NavLink } from "react-router-dom";
 import useAuth from "./CustomHooks/useAuth";
 
 const Navbar = () => {
-    const { user, LogOut } = useAuth();
-    const handleLogout = () => {
-        LogOut()
-            .then()
-            .catch(error => console.error(error))
-    }
+    const { user } = useAuth();
+
 
     const links = <>
         <li onClick="Reload()" className="hover:underline"><NavLink className={({ isActive }) => isActive ? "text-base font-bold text-blue-500" : "italic text-base font-semibold"} to="/">Home</NavLink></li>
@@ -26,7 +22,7 @@ const Navbar = () => {
                         {links}
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl md:text-3xl font-bold">VolunteerVista</a>
+                <Link to="/" className="btn btn-ghost text-xl md:text-3xl font-bold">VolunteerVista</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -54,11 +50,9 @@ const Navbar = () => {
                                 </div>
                             </div>
                             <ul tabIndex={0} className="mt-3 z-50 p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box space-y-3 w-64 text-center font-semibold">
-                                <Link to="/my&post" className="hover:underline hover:font-bold text-base">My Post</Link>
-                                <Link to="/add&volunteer" className="hover:underline hover:font-bold text-base">Add Volunteer Post</Link>
-                                <Link to="/dashboard" className="hover:underline hover:font-bold text-base">Dashboard</Link>
+                                <li className="font-bold">{user.displayName}</li>
                                 <li className="font-bold">{user.email}</li>
-                                <button onClick={handleLogout} className="btn btn-sm">Logout</button>
+                                <Link className="btn btn-primary btn-sm" to="/dashboard/my&profile">Dashboard</Link>
                             </ul>
                         </div> :
                         <Link to="/login">

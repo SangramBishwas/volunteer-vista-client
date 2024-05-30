@@ -39,8 +39,8 @@ const Request = ({ request, requests, setRequests }) => {
         });
     }
     return (
-        <div className="card flex-col md:flex-row lg:flex-row lg:h-full card-side bg-base-100 shadow-xl">
-            <div className="card w-full bg-base-100 shadow-xl image-full">
+        <div className="flex flex-col md:flex-row lg:flex-row lg:h-full card-side">
+            <div className="card w-full h-1/2 bg-base-100 shadow-xl image-full">
                 <figure><img src={image} alt="request" /></figure>
                 <div className="card-body space-y-4">
                     <h2 className="card-title">{title}</h2>

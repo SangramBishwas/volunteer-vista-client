@@ -2,6 +2,7 @@ import { CgProfile } from "react-icons/cg";
 import { MdOutlineHome, MdOutlineLocalPostOffice, MdPostAdd } from "react-icons/md";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import useAuth from "../CustomHooks/useAuth";
+import { Helmet } from "react-helmet-async";
 
 const Dashboard = () => {
     const { user, LogOut } = useAuth();
@@ -12,8 +13,11 @@ const Dashboard = () => {
             .catch(error => console.error(error))
     }
     return (
-        <div className="p-5 lg:px-20 flex flex-col lg:flex-row gap-24">
-            <div className="menu h-full p-3 space-y-2 w-full lg:w-1/4 bg-blue-600 text-white">
+        <div className="p-5 md:px-5 lg:px-20 flex flex-col lg:flex-row gap-24">
+            <Helmet>
+                <title>VolunteerVista | Dashboard</title>
+            </Helmet>
+            <div className="lg:menu h-full p-2 space-y-2 w-full lg:w-1/4 bg-blue-600 text-white">
                 <div className="flex items-center p-2 space-x-4">
                     <img src={user?.photoURL} alt="" className="w-12 h-12 rounded-full dark:bg-gray-500" />
                     <div>
@@ -24,7 +28,7 @@ const Dashboard = () => {
                         </span>
                     </div>
                 </div>
-                <div className="flex flex-col-reverse lg:flex-col divide-y dark:divide-gray-300">
+                <div className="md:flex md:flex-col-reverse lg:flex-col divide-y dark:divide-gray-300">
                     <ul className="flex justify-between flex-row-reverse lg:flex-col pt-2 pb-4 space-y-1 text-sm">
                         <li className="dark:bg-gray-100 dark:text-gray-900">
                             <Link to="/dashboard/my&profile" className="flex items-center p-2 space-x-3 rounded-md">

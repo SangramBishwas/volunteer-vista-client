@@ -41,9 +41,7 @@ const AddVolunteer = () => {
     return (
         <div className="my-5">
             <Helmet>
-                <title>
-                    VolunteerVista | Add Volunteer
-                </title>
+                <title>Dashboard | Add volunteer</title>
             </Helmet>
             <h2 className="text-center font-bold text-xl md:text-3xl">Add Your Post</h2>
             <form onSubmit={handleAddVolunteer} className="max-w-md mx-auto my-5">

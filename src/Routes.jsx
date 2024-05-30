@@ -41,19 +41,12 @@ const router = createBrowserRouter([
                 path: "/register",
                 element: <Register></Register>
             },
-            {
-                path: "/my&post",
-                element: <PivateRoute><MyPost></MyPost></PivateRoute>
-            },
-            {
-                path: "/add&volunteer",
-                element: <AddVolunteer></AddVolunteer>
-            },
+            
         ]
     },
     {
         path: "/dashboard",
-        element: <Dashboard></Dashboard>,
+        element: <PivateRoute><Dashboard></Dashboard></PivateRoute>,
         children: [
             {
                 path: "/dashboard/my&profile",

@@ -25,9 +25,7 @@ const MyPost = () => {
     return (
         <div className="mx-5 md:mx-12 lg:mx-24 my-5 lg:my-5">
             <Helmet>
-                <title>
-                    VolunteerVista | My Post
-                </title>
+                <title>Dashboard | My Posts</title>
             </Helmet>
             <h2 className="text-center font-bold text-xl md:text-3xl pb-10">My Needed Posts</h2>
             {posts.length === 0 ?
