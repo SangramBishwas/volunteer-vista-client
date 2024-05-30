@@ -39,7 +39,7 @@ const AddVolunteer = () => {
     }
 
     return (
-        <div className="my-10">
+        <div className="my-5">
             <Helmet>
                 <title>
                     VolunteerVista | Add Volunteer

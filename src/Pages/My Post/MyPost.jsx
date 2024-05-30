@@ -23,7 +23,7 @@ const MyPost = () => {
 
 
     return (
-        <div className="mx-5 md:mx-12 lg:mx-24 my-5 lg:my-10">
+        <div className="mx-5 md:mx-12 lg:mx-24 my-5 lg:my-5">
             <Helmet>
                 <title>
                     VolunteerVista | My Post
@@ -34,7 +34,7 @@ const MyPost = () => {
                 <div className="w-full">
                     <img className="mx-auto" src={noDataAvailable} alt="No data" />
                 </div> :
-                <div className="my-5 gap-7 grid md:grid-cols-2 lg:grid-cols-3">
+                <div className="my-5 gap-7 grid md:grid-cols-2">
                     {
                         posts.map(post => <Apost
                             key={post._id}
@@ -49,7 +49,7 @@ const MyPost = () => {
                 <div className="w-full">
                     <img className="mx-auto" src={noDataAvailable} alt="No data" />
                 </div> :
-                <div className="my-5 gap-7 grid lg:grid-cols-2">
+                <div className="my-5 gap-7 grid md:grid-cols-2">
                     {
                         requests.map(request => <Request
                             key={request}

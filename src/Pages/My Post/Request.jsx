@@ -39,18 +39,21 @@ const Request = ({ request, requests, setRequests }) => {
         });
     }
     return (
-        <div className="relative card flex-col md:flex-row lg:flex-row lg:h-full card-side bg-base-100 shadow-xl">
-            <figure className='md:w-1/2'><img src={image} alt="Movie" /></figure>
-            <div className="card-body">
-                <h2 className="card-title">{title}</h2>
-                <div className="flex justify-between md:items-center h-full">
-                    <h4 className="font-semibold">{category}</h4>
-                    <h4 className="font-semibold">{location}</h4>
-                </div>
-                <div onClick={() => handleDelete(_id)} className="right-1 top-1 md:absolute card-actions justify-end pb-5">
-                    <button className="btn md:btn-sm btn-primary">Cancel</button>
+        <div className="card flex-col md:flex-row lg:flex-row lg:h-full card-side bg-base-100 shadow-xl">
+            <div className="card w-full bg-base-100 shadow-xl image-full">
+                <figure><img src={image} alt="request" /></figure>
+                <div className="card-body space-y-4">
+                    <h2 className="card-title">{title}</h2>
+                    <div className='flex justify-between'>
+                        <p>{category}</p>
+                        <p>{location}</p>
+                        <div onClick={() => handleDelete(_id)} className="card-actions justify-center pb-5">
+                        <button className="btn md:btn-sm btn-primary">Cancel</button>
+                    </div>
+                    </div>
                 </div>
             </div>
+
         </div>
     );
 };
