@@ -32,7 +32,7 @@ const Slider = () => {
                         />
                     </h1>
                     <p>The biggest platform site. Where we can provide the best of best han made craft and also modern craft works like Ceramics and Pottery. <br />If you are here for the first time. You need to register.</p>
-                    <button className='btn lg:text-lg font-bold'>
+                    <button className='btn btn-primary lg:text-lg font-bold'>
                         <Link to="/register">Register Now</Link>
                     </button>
                 </div>
@@ -42,7 +42,7 @@ const Slider = () => {
                 <div className='text-center text-white absolute top-10 left-6 lg:top-40 lg:left-64 space-y-3 lg:space-y-10'>
                     <h1 className="font-extrabold text-4xl lg:text-7xl">Make Your Choice</h1>
                     <p>The biggest platform site. here we can provide the best of best han made craft and also modern craft works like Ceramics and Pottery. <br />If you want to buy and order something. So you need to see our items.</p>
-                    <button className='btn lg:text-lg font-bold'>
+                    <button className='btn btn-primary lg:text-lg font-bold'>
                         <Link to="/need&volunteer">Find Volunteer</Link>
                     </button>
                 </div>

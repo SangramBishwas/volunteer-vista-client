@@ -11,6 +11,9 @@ import MyPost from "./Pages/My Post/MyPost";
 import AddVolunteer from "./Pages/Add Volunteer/AddVolunteer";
 import Details from "./NeedVolunteer/Details";
 import PivateRoute from "./ContextAPI/PivateRoute";
+import Dashboard from "./Dashboard/Dashboard";
+import MyProfile from "./Pages/MyProfile/MyProfile";
+
 const router = createBrowserRouter([
     {
         path: "/",
@@ -48,6 +51,16 @@ const router = createBrowserRouter([
             },
         ]
     },
+    {
+        path: "/dashboard",
+        element: <Dashboard></Dashboard>,
+        children:[
+            {
+                path: "/dashboard/my&profile",
+                element: <MyProfile></MyProfile>
+            }
+        ]
+    }
 ]);
 
 export default router;

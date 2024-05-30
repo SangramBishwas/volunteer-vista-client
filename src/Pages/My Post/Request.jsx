@@ -43,13 +43,12 @@ const Request = ({ request, requests, setRequests }) => {
             <figure className='md:w-1/2'><img src={image} alt="Movie" /></figure>
             <div className="card-body">
                 <h2 className="card-title">{title}</h2>
-                <div className="flex justify-between">
+                <div className="flex justify-between md:items-center h-full">
                     <h4 className="font-semibold">{category}</h4>
                     <h4 className="font-semibold">{location}</h4>
-
                 </div>
-                <div onClick={() => handleDelete(_id)} className="right-1 top-1 lg:absolute card-actions justify-end pb-5">
-                    <button className="btn lg:btn-sm btn-primary">Cancel</button>
+                <div onClick={() => handleDelete(_id)} className="right-1 top-1 md:absolute card-actions justify-end pb-5">
+                    <button className="btn md:btn-sm btn-primary">Cancel</button>
                 </div>
             </div>
         </div>

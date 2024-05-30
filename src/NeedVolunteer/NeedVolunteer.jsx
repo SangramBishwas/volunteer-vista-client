@@ -65,7 +65,7 @@ const NeedVolunteer = () => {
 
             {layout === 'card' ?
                 <div className="gap-7 grid md:grid-cols-2 lg:grid-cols-3">
-                    {volunteerPosts.map((volunteer) => <div key={volunteer._id} className="card w-96 bg-base-100 shadow-xl">
+                    {volunteerPosts.map((volunteer) => <div key={volunteer._id} className="card lg:1/3 bg-base-100 shadow-xl">
                         <figure><img className="h-64 w-full" src={volunteer.image} alt="Shoes" /></figure>
                         <div className="card-body">
                             <h2 className="card-title">{volunteer.title}</h2>
@@ -77,7 +77,7 @@ const NeedVolunteer = () => {
                             </div>
                             <div className="card-actions justify-end">
                                 <Link to={`/posts/${volunteer._id}`}>
-                                    <button className="btn btn-neutral text-lg"><GrLinkNext /></button>
+                                    <button className="btn btn-primary text-lg"><GrLinkNext /></button>
                                 </Link>
                             </div>
                         </div>
