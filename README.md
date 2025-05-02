@@ -28,3 +28,23 @@ A platform that connects volunteers with meaningful opportunities to make a diff
 - **Frontend**: React, Tailwind CSS
 - **Routing**: React Router
 - **Backend/Hosting**: Firebase Authentication, Firestore, Fire
+
+---
+
+### Installation
+
+1.  **Clone the repository:**
+
+    ```bash
+    git clone git@github.com:SangramBishwas/volunteer-vista-client.git
+    cd volunteer-vista-client
+    ```
+---
+
+2.  **Setup:**
+
+    ```bash
+    
+    npm install
+    
+    ```
