@@ -1,26 +1,34 @@
-# VolunteerVista
+# VolunteerVista 🙌
 
-https://assignment-11-7da79.web.app
+A platform that connects volunteers with meaningful opportunities to make a difference in their communities.
 
-## Packages
+🌐 **Live Site**: [VolunteerVista](https://assignment-11-7da79.web.app/)
 
--  React Awesome reveal
--  React Hook Form
--  React-simple-typewriter
--  React Icons
--  React Toastify
--  Swiper Slider
+---
 
-### Features 
+## 📸 Screenshots
 
-- Virtual Dom
-- Data Binding
-- Context API
-- React Hooks
-- Firebase Authentication
+![Home Page](./screenshots/homepage.png)
+![Dashboard](./screenshots/dashboard.png)
 
+---
 
-Currently, two official plugins are available:
+## ⚙️ Features
+
+- 🔐 User Authentication (Login/Register)
+- 📋 Browse and register for volunteer events
+- 🧑‍💻 Admin dashboard to manage opportunities
+- 📱 Fully responsive and mobile-friendly design
+- ☁️ Firebase integration for backend services
+
+---
+
+## 🛠 Tech Stack
+
+- **Frontend**: React, Tailwind CSS
+- **Routing**: React Router
+- **Backend/Hosting**: Firebase Authentication, Firestore, Fire
+
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
